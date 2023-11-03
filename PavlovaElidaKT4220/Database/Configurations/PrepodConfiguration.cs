@@ -51,9 +51,23 @@ namespace PavlovaElidaKT4220.Database.Configurations
                 .HasConstraintName("fk_f_kafedra_id")
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.Property(p => p.StepenId)
+              .HasColumnName("stepen_id")
+              .HasComment("Индетификатор ученой степени");
+
+            builder.ToTable(TableName)
+                .HasOne(p => p.Stepen)
+                .WithMany()
+                .HasForeignKey(p => p.StepenId)
+                .HasConstraintName("fk_f_stepen_id")
+                .OnDelete(DeleteBehavior.Cascade);
+
+
             builder.ToTable(TableName)
                 .HasIndex(p => p.KafedraId, $"idx_{TableName}_fk_f_kafedra_id");
 
+            builder.ToTable(TableName)
+               .HasIndex(p => p.StepenId, $"idx_{TableName}_fk_f_stepen_id");
         }
 
     }

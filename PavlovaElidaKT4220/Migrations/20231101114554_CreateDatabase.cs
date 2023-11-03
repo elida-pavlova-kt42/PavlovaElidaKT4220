@@ -45,7 +45,8 @@ namespace PavlovaElidaKT4220.Migrations
                     c_prepod_firstname = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Имя преподавателя"),
                     c_prepod_lastname = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Фамилия преподавателя"),
                     c_prepod_middlename = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Отчество преподавателя"),
-                    kafedra_id = table.Column<int>(type: "int", nullable: false, comment: "Индетификатор кафедры")
+                    kafedra_id = table.Column<int>(type: "int", nullable: false, comment: "Индетификатор кафедры"),
+                    stepen_id = table.Column<int>(type: "int", nullable: false, comment: "Индетификатор ученой степени")
                 },
                 constraints: table =>
                 {
@@ -56,12 +57,23 @@ namespace PavlovaElidaKT4220.Migrations
                         principalTable: "cd_kafedra",
                         principalColumn: "kafedra_id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "fk_f_stepen_id",
+                        column: x => x.stepen_id,
+                        principalTable: "cd_stepen",
+                        principalColumn: "stepen_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "idx_cd_prepod_fk_f_kafedra_id",
                 table: "cd_prepod",
                 column: "kafedra_id");
+
+            migrationBuilder.CreateIndex(
+                name: "idx_cd_prepod_fk_f_stepen_id",
+                table: "cd_prepod",
+                column: "stepen_id");
         }
 
         /// <inheritdoc />
@@ -71,10 +83,10 @@ namespace PavlovaElidaKT4220.Migrations
                 name: "cd_prepod");
 
             migrationBuilder.DropTable(
-                name: "cd_stepen");
+                name: "cd_kafedra");
 
             migrationBuilder.DropTable(
-                name: "cd_kafedra");
+                name: "cd_stepen");
         }
     }
 }

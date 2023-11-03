@@ -80,10 +80,17 @@ namespace PavlovaElidaKT4220.Migrations
                         .HasColumnName("c_prepod_middlename")
                         .HasComment("Отчество преподавателя");
 
+                    b.Property<int>("StepenId")
+                        .HasColumnType("int")
+                        .HasColumnName("stepen_id")
+                        .HasComment("Индетификатор ученой степени");
+
                     b.HasKey("PrepodId")
                         .HasName("pk_cd_prepod_prepod_id");
 
                     b.HasIndex(new[] { "KafedraId" }, "idx_cd_prepod_fk_f_kafedra_id");
+
+                    b.HasIndex(new[] { "StepenId" }, "idx_cd_prepod_fk_f_stepen_id");
 
                     b.ToTable("cd_prepod", (string)null);
                 });
@@ -120,7 +127,16 @@ namespace PavlovaElidaKT4220.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_f_kafedra_id");
 
+                    b.HasOne("PavlovaElidaKT4220.Models.Stepen", "Stepen")
+                        .WithMany()
+                        .HasForeignKey("StepenId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_f_stepen_id");
+
                     b.Navigation("Kafedra");
+
+                    b.Navigation("Stepen");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,9 @@
 using NLog;
 using NLog.Web;
-
+using PavlovaElidaKT4220.ServiceInterfaces;
 using Microsoft.EntityFrameworkCore;
 using PavlovaElidaKT4220.Database;
+using PavlovaElidaKT4220.ServiceInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -19,8 +20,8 @@ try
 
     builder.Services.AddDbContext<PrepodDbcontext>(options =>
        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    builder.Services.AddServices();
 
-   
 
 
     var app = builder.Build();
