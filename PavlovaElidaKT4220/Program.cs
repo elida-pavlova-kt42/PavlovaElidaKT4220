@@ -1,9 +1,11 @@
 using NLog;
+using System.Net;
 using NLog.Web;
 using PavlovaElidaKT4220.ServiceInterfaces;
 using Microsoft.EntityFrameworkCore;
 using PavlovaElidaKT4220.Database;
 using PavlovaElidaKT4220.ServiceInterfaces;
+using PavlovaElidaKT4220.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -32,6 +34,7 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
 
     app.UseAuthorization();
 
