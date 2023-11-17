@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33717.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PavlovaElidaKT4220", "PavlovaElidaKT4220\PavlovaElidaKT4220.csproj", "{5C55B0F9-D3D6-4104-818A-84FB45AC8944}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PavlovaElidaKT4220", "PavlovaElidaKT4220\PavlovaElidaKT4220.csproj", "{5C55B0F9-D3D6-4104-818A-84FB45AC8944}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PavlovaElidaKT4220.Tests", "PavlovaElidaKT4220.Tests\PavlovaElidaKT4220.Tests.csproj", "{BDBF3B94-1AAE-435A-9EB6-66850C885F73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5C55B0F9-D3D6-4104-818A-84FB45AC8944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C55B0F9-D3D6-4104-818A-84FB45AC8944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C55B0F9-D3D6-4104-818A-84FB45AC8944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDBF3B94-1AAE-435A-9EB6-66850C885F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDBF3B94-1AAE-435A-9EB6-66850C885F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDBF3B94-1AAE-435A-9EB6-66850C885F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDBF3B94-1AAE-435A-9EB6-66850C885F73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
