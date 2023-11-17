@@ -5,7 +5,7 @@
 namespace PavlovaElidaKT4220.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDatabase : Migration
+    public partial class Mig1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,6 +45,8 @@ namespace PavlovaElidaKT4220.Migrations
                     c_prepod_firstname = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Имя преподавателя"),
                     c_prepod_lastname = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Фамилия преподавателя"),
                     c_prepod_middlename = table.Column<string>(type: "nvarchar(Max)", maxLength: 100, nullable: false, comment: "Отчество преподавателя"),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     kafedra_id = table.Column<int>(type: "int", nullable: false, comment: "Индетификатор кафедры"),
                     stepen_id = table.Column<int>(type: "int", nullable: false, comment: "Индетификатор ученой степени")
                 },
@@ -66,7 +68,7 @@ namespace PavlovaElidaKT4220.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "idx_cd_prepod_fk_f_kafedra_id",
+                name: "idx_cd_prepod_fk_c_kafedra_id",
                 table: "cd_prepod",
                 column: "kafedra_id");
 

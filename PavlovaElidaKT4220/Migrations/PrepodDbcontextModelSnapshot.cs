@@ -73,12 +73,18 @@ namespace PavlovaElidaKT4220.Migrations
                         .HasColumnName("c_prepod_lastname")
                         .HasComment("Фамилия преподавателя");
 
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MiddleName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(Max)")
                         .HasColumnName("c_prepod_middlename")
                         .HasComment("Отчество преподавателя");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StepenId")
                         .HasColumnType("int")
@@ -88,7 +94,7 @@ namespace PavlovaElidaKT4220.Migrations
                     b.HasKey("PrepodId")
                         .HasName("pk_cd_prepod_prepod_id");
 
-                    b.HasIndex(new[] { "KafedraId" }, "idx_cd_prepod_fk_f_kafedra_id");
+                    b.HasIndex(new[] { "KafedraId" }, "idx_cd_prepod_fk_c_kafedra_id");
 
                     b.HasIndex(new[] { "StepenId" }, "idx_cd_prepod_fk_f_stepen_id");
 

@@ -8,9 +8,9 @@ namespace PavlovaElidaKT4220.Database
     public class PrepodDbcontext : DbContext
     {
         //Добавляем таблицы
-        DbSet<Kafedra> Kafedra { get; set; }
-        DbSet<Prepod> Prepod { get; set; }
-        DbSet<Stepen> Stepen { get; set; }
+        public DbSet<Kafedra> Kafedra { get; set; }
+         public DbSet<Prepod> Prepod { get; set; }
+        public DbSet<Stepen> Stepen { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

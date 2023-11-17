@@ -11,8 +11,8 @@ using PavlovaElidaKT4220.Database;
 namespace PavlovaElidaKT4220.Migrations
 {
     [DbContext(typeof(PrepodDbcontext))]
-    [Migration("20231101114554_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20231117110202_Mig1")]
+    partial class Mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,12 +76,18 @@ namespace PavlovaElidaKT4220.Migrations
                         .HasColumnName("c_prepod_lastname")
                         .HasComment("Фамилия преподавателя");
 
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MiddleName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(Max)")
                         .HasColumnName("c_prepod_middlename")
                         .HasComment("Отчество преподавателя");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StepenId")
                         .HasColumnType("int")
@@ -91,7 +97,7 @@ namespace PavlovaElidaKT4220.Migrations
                     b.HasKey("PrepodId")
                         .HasName("pk_cd_prepod_prepod_id");
 
-                    b.HasIndex(new[] { "KafedraId" }, "idx_cd_prepod_fk_f_kafedra_id");
+                    b.HasIndex(new[] { "KafedraId" }, "idx_cd_prepod_fk_c_kafedra_id");
 
                     b.HasIndex(new[] { "StepenId" }, "idx_cd_prepod_fk_f_stepen_id");
 

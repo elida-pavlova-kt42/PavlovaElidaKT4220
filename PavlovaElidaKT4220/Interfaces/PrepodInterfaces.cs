@@ -1,15 +1,15 @@
 ﻿using PavlovaElidaKT4220.Models;
 using PavlovaElidaKT4220.Database;
-using PavlovaElidaKT4220.Filters.PrepodFilters;
+using PavlovaElidaKT4220.Filters.PrepodKafedraFilters;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace PavlovaElidaKT4220.Interfaces
+namespace PavlovaElidaKT4220.Interfaces.PrepodInterfaces
 
 {
     public interface IPrepodService
     {
-        public Task<Prepod[]> GetPrepodsByGroupAsync(PrepodKafedraFilter filter, CancellationToken cancellationToken);
+        public Task<Prepod[]> GetPrepodByKafedraAsync(PrepodKafedraFilter filter, CancellationToken cancellationToken);
     }
     public class PrepodService : IPrepodService
     {
@@ -18,9 +18,10 @@ namespace PavlovaElidaKT4220.Interfaces
         {
             _dbContext = dbContext;
         }
-        public Task<Prepod[]> GetPrepodsByGroupAsync(PrepodKafedraFilter filter, CancellationToken cancellationToken = default)
+        public Task<Prepod[]> GetPrepodByKafedraAsync(PrepodKafedraFilter filter, CancellationToken cancellationToken = default)
         {
             var prepod = _dbContext.Set<Prepod>().Where(w => w.Kafedra.KafedraName == filter.KafedraName).ToArrayAsync(cancellationToken);
+
             return prepod;
         }
     }

@@ -42,7 +42,8 @@ namespace PavlovaElidaKT4220.Database.Configurations
 
             builder.Property(p => p.KafedraId)
                 .HasColumnName("kafedra_id")
-                .HasComment("Индетификатор кафедры");
+                .HasComment("Индетификатор кафедры")
+             .HasColumnType(ColumnType.Int);
 
             builder.ToTable(TableName)
                 .HasOne(p => p.Kafedra)
@@ -51,9 +52,17 @@ namespace PavlovaElidaKT4220.Database.Configurations
                 .HasConstraintName("fk_f_kafedra_id")
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.ToTable(TableName)
+               .HasIndex(p => p.KafedraId, $"idx_{TableName}_fk_c_kafedra_id");
+
+            //Добавим явную автоподгрузку связанной сущности
+            builder.Navigation(p => p.Kafedra)
+                .AutoInclude();
+
             builder.Property(p => p.StepenId)
               .HasColumnName("stepen_id")
-              .HasComment("Индетификатор ученой степени");
+              .HasComment("Индетификатор ученой степени")
+              .HasColumnType(ColumnType.Int);
 
             builder.ToTable(TableName)
                 .HasOne(p => p.Stepen)
@@ -63,11 +72,13 @@ namespace PavlovaElidaKT4220.Database.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-            builder.ToTable(TableName)
-                .HasIndex(p => p.KafedraId, $"idx_{TableName}_fk_f_kafedra_id");
+            
 
             builder.ToTable(TableName)
                .HasIndex(p => p.StepenId, $"idx_{TableName}_fk_f_stepen_id");
+            //Добавим явную автоподгрузку связанной сущности
+            builder.Navigation(p => p.Stepen)
+                .AutoInclude();
         }
 
     }
